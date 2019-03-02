@@ -16,13 +16,12 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:5be1c66caeb03381e4e7322eddfc0b06b26991ddba3ad39e009ccf67c20dfb18"
+  digest = "1:d0a31b77988b04afbfa2c5ee38567a7a35d5a95de2266a644a7bc8d5c898e68d"
   name = "github.com/btcsuite/btcutil"
   packages = [
     ".",
     "base58",
     "bech32",
-    "hdkeychain",
   ]
   pruneopts = "UT"
   revision = "4c204d6978034c001714728401fcd63060d568b4"
@@ -43,7 +42,6 @@
     "github.com/btcsuite/btcd/chaincfg",
     "github.com/btcsuite/btcd/wire",
     "github.com/btcsuite/btcutil",
-    "github.com/btcsuite/btcutil/hdkeychain",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

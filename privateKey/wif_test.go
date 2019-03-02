@@ -1,24 +1,13 @@
+// Copyright (c) 2019 Romano (Viacoin developer)
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 package privateKey
 
 import (
 	"github.com/romanornr/crypto-addrgen/bcoins"
 	"testing"
 )
-
-//func TestNew(t *testing.T) {
-//	ltc, _ := bcoins.SelectCoin("LTC")
-//	pk, _ := NewWIF(ltc.Network.ChainCgfMainNetParams())
-//	net := ltc.Network.ChainCgfMainNetParams()
-//	fmt.Println(pk)
-//
-//	fromwif := "T8VERgAiBcUnRXmWxgVzp6AaH1hKwPQQQeghi3n9ZY6nF59GuTJf"
-//	wif, _ := FromWIF(fromwif)
-//
-//	//chaincfg.Register(ltc.Network.ChainCgfMainNetParams())
-//	a, _ := NewPublicKeyFromWIF(*wif, net, true)
-//	fmt.Println(a.ScriptAddress())
-//
-//}
 
 func TestFromWIF(t *testing.T) {
 	wif := "T8VERgAiBcUnRXmWxgVzp6AaH1hKwPQQQeghi3n9ZY6nF59GuTJf"

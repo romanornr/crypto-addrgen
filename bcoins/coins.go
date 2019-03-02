@@ -1,6 +1,6 @@
 // Copyright (c) 2019 Romano (Viacoin developer)
-// Use of this source code is governed by an ISC
-// license that can be found in the LICENSE file.
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 package bcoins
 

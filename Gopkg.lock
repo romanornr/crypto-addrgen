@@ -3,6 +3,17 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:47ea4fbe2ab4aeb9808502c51e657041c2e49b36b83fc1c1a349135cdf16342f"
+  name = "github.com/agl/ed25519"
+  packages = [
+    ".",
+    "edwards25519",
+  ]
+  pruneopts = "UT"
+  revision = "5312a61534124124185d41f09206b9fef1d88403"
+
+[[projects]]
+  branch = "master"
   digest = "1:8767561e1d23eb39126857abd076db5f29421dcd7ed56dc3c9c9d5ff4763144a"
   name = "github.com/btcsuite/btcd"
   packages = [
@@ -16,15 +27,59 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:d0a31b77988b04afbfa2c5ee38567a7a35d5a95de2266a644a7bc8d5c898e68d"
+  digest = "1:5be1c66caeb03381e4e7322eddfc0b06b26991ddba3ad39e009ccf67c20dfb18"
   name = "github.com/btcsuite/btcutil"
   packages = [
     ".",
     "base58",
     "bech32",
+    "hdkeychain",
   ]
   pruneopts = "UT"
   revision = "4c204d6978034c001714728401fcd63060d568b4"
+
+[[projects]]
+  branch = "master"
+  digest = "1:05cf4e9e60a620f39b540b8ae6120675740d5f41050a40587d36f599fbbc338c"
+  name = "github.com/dchest/blake256"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "dee3fe6eb0e98dc774a94fc231f85baf7c29d360"
+
+[[projects]]
+  branch = "master"
+  digest = "1:6e0bace02164b96762f35e9011c931d6f270a4e84e46a35a854910b9216153d8"
+  name = "github.com/decred/base58"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "56c501706f00d9e1cfacee19a27117e12da24734"
+
+[[projects]]
+  digest = "1:af1012b867e6b96e0df2c040845d04b2c17f0acaa0728545994e3e5965f36701"
+  name = "github.com/decred/dcrd"
+  packages = [
+    "chaincfg",
+    "chaincfg/chainec",
+    "chaincfg/chainhash",
+    "dcrec",
+    "dcrec/edwards",
+    "dcrec/secp256k1",
+    "dcrec/secp256k1/schnorr",
+    "dcrutil",
+    "txscript",
+    "wire",
+  ]
+  pruneopts = "UT"
+  revision = "0fe564967f03160b9dbe0a147420d8aa13371d12"
+  version = "v1.3.0"
+
+[[projects]]
+  digest = "1:72c1f6339c7ca1ecea3e3d30f9cae51bfca19b02d04cfe7e6db32cbfb9a65ddc"
+  name = "github.com/decred/slog"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "fbd821ef791ba2b8ae945f5d44f4e49396d230c5"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
@@ -42,6 +97,8 @@
     "github.com/btcsuite/btcd/chaincfg",
     "github.com/btcsuite/btcd/wire",
     "github.com/btcsuite/btcutil",
+    "github.com/btcsuite/btcutil/hdkeychain",
+    "github.com/decred/dcrd/txscript",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

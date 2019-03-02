@@ -61,3 +61,34 @@ func TestNewPublicKeyFromWIF(t *testing.T) {
 		}
 	}
 }
+
+func TestWIFToSegwit(t *testing.T) {
+
+	var tests = []struct {
+		assetSymbol   string
+		addressPrefix string
+		wif     string
+		segwitAddress string
+	}{
+		{assetSymbol: "via", addressPrefix: "V", wif: "WXJxG7n4FcWE6shiMN6fedUwMqEFZXWuupGg5P96iYxgmcxCtxoT", segwitAddress: "ERdkr9sgFjaEAEMVfBSqpVjzMsu5oZLXcy"}, // viacoin
+		//{assetSymbol: "ltc", addressPrefix: "L", wif: "T8VERgAiBcUnRXmWxgVzp6AaH1hKwPQQQeghi3n9ZY6nF59GuTJf", compressedPublicKey: "LV7LV7Z4bWDEjYkfx9dQo6k6RjGbXsg6hS"}, // litecoin
+	}
+
+	for _, pair := range tests {
+		asset, _ := bcoins.SelectCoin(pair.assetSymbol)
+		wifString := pair.wif
+		wif, _ := FromWIF(wifString)
+
+		net := asset.Network.ChainCgfMainNetParams()
+
+		segwitAddress, _ := WIFToSegwit(wif, net)
+		// test segwit address creation
+		if segwitAddress.EncodeAddress() != pair.segwitAddress {
+			t.Error(
+				"For", asset.Name,
+				"expected", pair.segwitAddress,
+				"got", segwitAddress.EncodeAddress(),
+			)
+		}
+	}
+}

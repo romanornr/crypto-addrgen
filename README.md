@@ -1,6 +1,21 @@
 # crypto-addrgen
 Address generation for Viacoin, Bitcoin &amp; Litecoin
 
+This tool is for address generation.
+
+##### functionality
+- [x] Create WIF
+- [x] Decode WIF
+- [x] Create public keys (legacy addresses)
+- [x] Create Segwit addresses from WIF
+- [ ] Create Bech32 addresses from WIF
+- [ ] Create legacy addresses from xpriv
+- [ ] Create Segwit addresses from xpriv
+- [ ] Create Bech32 addresses from xpub
+- [ ] Create addresses from seed
+- [ ] Create HD wallets
+
+
 
 License
 -------

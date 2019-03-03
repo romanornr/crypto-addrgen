@@ -7,8 +7,8 @@ package privateKey
 import (
 	"github.com/btcsuite/btcd/btcec"
 	"github.com/btcsuite/btcd/chaincfg"
+	"github.com/btcsuite/btcd/txscript"
 	"github.com/btcsuite/btcutil"
-	"github.com/decred/dcrd/txscript"
 )
 
 func NewWIF(net *chaincfg.Params) (*btcutil.WIF, error) {
@@ -37,7 +37,7 @@ func NewPublicKeyFromWIF(wif btcutil.WIF, net *chaincfg.Params, compressed bool)
 	return pk, err
 }
 
-func WIFToSegwit(wif *btcutil.WIF, net *chaincfg.Params) (*btcutil.AddressScriptHash, error){
+func WIFToSegwit(wif *btcutil.WIF, net *chaincfg.Params) (*btcutil.AddressScriptHash, error) {
 	keyHash := btcutil.Hash160(wif.SerializePubKey())
 	scriptSig, err := txscript.NewScriptBuilder().AddOp(txscript.OP_0).AddData(keyHash).Script()
 	if err != nil {
@@ -50,7 +50,6 @@ func WIFToSegwit(wif *btcutil.WIF, net *chaincfg.Params) (*btcutil.AddressScript
 
 	return segwitAddress, err
 }
-
 
 //func Reee(net *chaincfg.Params) {
 //	acct0Pub, err := hdkeychain.NewKeyFromString("xpub6Cb8Q6pDeS8PdKNbDv9Hvq4WpJXL3JvKvmHHwR1wD2H543hiCUE1f1tB5AXE6yg13k7xZ6PzEXMNUFHXk6kkx4RYte8VB1i4tCX9rwQVR4a")

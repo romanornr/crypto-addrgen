@@ -25,12 +25,12 @@ func TestFromWIF(t *testing.T) {
 func TestNewPublicKeyFromWIF(t *testing.T) {
 
 	var tests = []struct {
-		assetSymbol   string
-		addressPrefix string
-		wif     string
+		assetSymbol         string
+		addressPrefix       string
+		wif                 string
 		compressedPublicKey string
 	}{
-		{assetSymbol: "via", addressPrefix: "V", wif: "7hm2LyNJJvRP5FAondfNBJBVLZ7iZDXDXM5pSz8P6PGiQZJ3Tpj", compressedPublicKey: "Ved77A1rKsyDNBJveamX8TA8UgqMWuq7c7"}, // viacoin
+		{assetSymbol: "via", addressPrefix: "V", wif: "7hm2LyNJJvRP5FAondfNBJBVLZ7iZDXDXM5pSz8P6PGiQZJ3Tpj", compressedPublicKey: "Ved77A1rKsyDNBJveamX8TA8UgqMWuq7c7"},  // viacoin
 		{assetSymbol: "ltc", addressPrefix: "L", wif: "T8VERgAiBcUnRXmWxgVzp6AaH1hKwPQQQeghi3n9ZY6nF59GuTJf", compressedPublicKey: "LV7LV7Z4bWDEjYkfx9dQo6k6RjGbXsg6hS"}, // litecoin
 	}
 
@@ -67,7 +67,7 @@ func TestWIFToSegwit(t *testing.T) {
 	var tests = []struct {
 		assetSymbol   string
 		addressPrefix string
-		wif     string
+		wif           string
 		segwitAddress string
 	}{
 		{assetSymbol: "via", addressPrefix: "V", wif: "WXJxG7n4FcWE6shiMN6fedUwMqEFZXWuupGg5P96iYxgmcxCtxoT", segwitAddress: "ERdkr9sgFjaEAEMVfBSqpVjzMsu5oZLXcy"}, // viacoin

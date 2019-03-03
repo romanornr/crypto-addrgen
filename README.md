@@ -14,6 +14,11 @@ This tool is for address generation.
 - [ ] Create Bech32 addresses from xpub
 - [ ] Create addresses from seed
 - [ ] Create HD wallets
+<br><br>
+##### supported assets
+- [ ] Bitcoin 
+- [x] Viacoin
+- [x] Litecoin
 
 
 
@@ -22,3 +27,5 @@ License
 
 This tool is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
+
+Copyright 2019 Romano (Viacoin developer)

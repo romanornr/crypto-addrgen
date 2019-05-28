@@ -5,6 +5,7 @@
 package privateKey
 
 import (
+	"fmt"
 	"github.com/romanornr/crypto-addrgen/bcoins"
 	"testing"
 )
@@ -91,4 +92,23 @@ func TestWIFToSegwit(t *testing.T) {
 			)
 		}
 	}
+}
+
+// test showing how to turn a wif into a viacoin bech32 address
+func TestWIFToBech32(t *testing.T) {
+	asset, _ := bcoins.SelectCoin("via")
+
+	wif := "WXJxG7n4FcWE6shiMN6fedUwMqEFZXWuupGg5P96iYxgmcxCtxoT"
+	newWif, _ := FromWIF(wif)
+	address := WIFToBech32(newWif)
+
+	expected := "via1qkh4zuddx9laq8qmerajmkxj42tugjyrccktclf"
+	if address != expected {
+		t.Error(
+			"For", asset.Name,
+			"expected", expected,
+			"got", address,
+		)
+	}
+	fmt.Printf("Viacoin bech32 address is: %s\n", address)
 }

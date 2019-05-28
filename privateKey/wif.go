@@ -5,10 +5,12 @@
 package privateKey
 
 import (
+	"fmt"
 	"github.com/btcsuite/btcd/btcec"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/txscript"
 	"github.com/btcsuite/btcutil"
+	"github.com/btcsuite/btcutil/bech32"
 )
 
 func NewWIF(net *chaincfg.Params) (*btcutil.WIF, error) {
@@ -49,6 +51,30 @@ func WIFToSegwit(wif *btcutil.WIF, net *chaincfg.Params) (*btcutil.AddressScript
 	}
 
 	return segwitAddress, err
+}
+
+// create a Bech32 address (Viacoin only, untested on other coins)
+func WIFToBech32(wif *btcutil.WIF) string {
+
+	// Hash160 calculates the hash ripemd160(sha256(b)).
+	keyHash := btcutil.Hash160(wif.SerializePubKey())
+
+	conv, err := bech32.ConvertBits(keyHash, 8, 5, true)
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
+
+	p := []byte{0}
+	for i := 0; i < len(conv); i ++ {
+		p = append(p, conv[i])
+	}
+
+	encoded, err := bech32.Encode("via", p)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return encoded
 }
 
 //func Reee(net *chaincfg.Params) {

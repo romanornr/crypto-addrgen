@@ -13,6 +13,7 @@ import (
 	"github.com/btcsuite/btcutil/bech32"
 )
 
+// creat a new privatekey in WIF format
 func NewWIF(net *chaincfg.Params) (*btcutil.WIF, error) {
 	chaincfg.Register(net)
 	secret, err := btcec.NewPrivateKey(btcec.S256())
@@ -29,6 +30,7 @@ func FromWIF(WIF string) (*btcutil.WIF, error) {
 	return wif, err
 }
 
+// create a new public key from a WIF private key
 func NewPublicKeyFromWIF(wif btcutil.WIF, net *chaincfg.Params, compressed bool) (*btcutil.AddressPubKey, error) {
 	chaincfg.Register(net)
 	serializedPubKey := wif.PrivKey.PubKey().SerializeCompressed()
@@ -39,6 +41,7 @@ func NewPublicKeyFromWIF(wif btcutil.WIF, net *chaincfg.Params, compressed bool)
 	return pk, err
 }
 
+// convert a WIF private key to a segwit address
 func WIFToSegwit(wif *btcutil.WIF, net *chaincfg.Params) (*btcutil.AddressScriptHash, error) {
 	keyHash := btcutil.Hash160(wif.SerializePubKey())
 	scriptSig, err := txscript.NewScriptBuilder().AddOp(txscript.OP_0).AddData(keyHash).Script()
@@ -53,8 +56,8 @@ func WIFToSegwit(wif *btcutil.WIF, net *chaincfg.Params) (*btcutil.AddressScript
 	return segwitAddress, err
 }
 
-// create a Bech32 address (Viacoin only, untested on other coins)
-func WIFToBech32(wif *btcutil.WIF) string {
+// convert a WIF private key to a Bech32 address (Viacoin only, untested on other coins)
+func WIFToBech32(wif *btcutil.WIF, hrp string) string {
 
 	// Hash160 calculates the hash ripemd160(sha256(b)).
 	keyHash := btcutil.Hash160(wif.SerializePubKey())
@@ -69,7 +72,7 @@ func WIFToBech32(wif *btcutil.WIF) string {
 		p = append(p, conv[i])
 	}
 
-	encoded, err := bech32.Encode("via", p)
+	encoded, err := bech32.Encode(hrp, p)
 	if err != nil {
 		fmt.Println(err)
 	}

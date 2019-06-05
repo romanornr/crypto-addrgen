@@ -5,7 +5,6 @@
 package privateKey
 
 import (
-	"fmt"
 	"github.com/romanornr/crypto-addrgen/bcoins"
 	"testing"
 )
@@ -96,19 +95,24 @@ func TestWIFToSegwit(t *testing.T) {
 
 // test showing how to turn a wif into a viacoin bech32 address
 func TestWIFToBech32(t *testing.T) {
-	asset, _ := bcoins.SelectCoin("via")
 
-	wif := "WXJxG7n4FcWE6shiMN6fedUwMqEFZXWuupGg5P96iYxgmcxCtxoT"
-	newWif, _ := FromWIF(wif)
-	address := WIFToBech32(newWif)
-
-	expected := "via1qkh4zuddx9laq8qmerajmkxj42tugjyrccktclf"
-	if address != expected {
-		t.Error(
-			"For", asset.Name,
-			"expected", expected,
-			"got", address,
-		)
+	var tests = []struct {
+		assetSymbol   string
+		wif           string
+		bech32address string
+	}{
+		{assetSymbol: "via", wif: "WXJxG7n4FcWE6shiMN6fedUwMqEFZXWuupGg5P96iYxgmcxCtxoT", bech32address: "via1qkh4zuddx9laq8qmerajmkxj42tugjyrccktclf"}, // viacoin
+		//{assetSymbol: "ltc", addressPrefix: "L", wif: "T8VERgAiBcUnRXmWxgVzp6AaH1hKwPQQQeghi3n9ZY6nF59GuTJf", compressedPublicKey: "LV7LV7Z4bWDEjYkfx9dQo6k6RjGbXsg6hS"}, // litecoin
 	}
-	fmt.Printf("Viacoin bech32 address is: %s\n", address)
+
+	for _, pair := range tests {
+		asset, _ := bcoins.SelectCoin(pair.assetSymbol)
+		wif, _ := FromWIF(pair.wif)
+
+		bech32Address := WIFToBech32(wif, asset.Network.Bech32HRPSegwit)
+
+		if bech32Address != pair.bech32address {
+			t.Errorf("For %s expected %s got %s", asset.Name, pair.bech32address, bech32Address)
+		}
+	}
 }

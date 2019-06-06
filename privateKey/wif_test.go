@@ -35,7 +35,7 @@ func TestNewPublicKeyFromWIF(t *testing.T) {
 	}
 
 	for _, pair := range tests {
-		asset, _ := bcoins.SelectCoin(pair.assetSymbol)
+		asset, _ := bcoins.SelectAsset(pair.assetSymbol)
 		wifString := pair.wif
 		wif, _ := FromWIF(wifString)
 
@@ -75,7 +75,7 @@ func TestWIFToSegwit(t *testing.T) {
 	}
 
 	for _, pair := range tests {
-		asset, _ := bcoins.SelectCoin(pair.assetSymbol)
+		asset, _ := bcoins.SelectAsset(pair.assetSymbol)
 		wifString := pair.wif
 		wif, _ := FromWIF(wifString)
 
@@ -106,7 +106,7 @@ func TestWIFToBech32(t *testing.T) {
 	}
 
 	for _, pair := range tests {
-		asset, _ := bcoins.SelectCoin(pair.assetSymbol)
+		asset, _ := bcoins.SelectAsset(pair.assetSymbol)
 		wif, _ := FromWIF(pair.wif)
 
 		bech32Address := WIFToBech32(wif, asset.Network.Bech32HRPSegwit)

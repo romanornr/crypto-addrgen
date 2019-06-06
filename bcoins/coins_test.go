@@ -16,7 +16,7 @@ func TestSelectCoin(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		asset, err := SelectCoin(test.assetSymbol)
+		asset, err := SelectAsset(test.assetSymbol)
 		if err != nil {
 			t.Errorf("Test failed: %s", err)
 		}

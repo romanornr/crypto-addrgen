@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type Coin struct {
+type Asset struct {
 	Name          string
 	Unit          string
 	Symbol        string
@@ -30,7 +30,7 @@ type Network struct {
 	Bech32HRPSegwit string
 }
 
-var coins = map[string]Coin{
+var coins = map[string]Asset{
 	"via": {
 		Name: "viacoin", Symbol: "via", Unit: "VIA",
 		Network: &Network{
@@ -39,6 +39,8 @@ var coins = map[string]Coin{
 			P2SH:            0x21,
 			PrivateKeyID:    0xC7,
 			HDCoinType:      14,
+			HDPrivateKeyID: [4]byte{0x04, 0x88, 0xad, 0xe4}, // starts with xprv
+			HDPublicKeyID:  [4]byte{0x04, 0x88, 0xb2, 0x1e}, // starts with xpub
 			magic:           0xcbc6680f,
 			Bech32HRPSegwit: "via",
 		},
@@ -52,21 +54,21 @@ var coins = map[string]Coin{
 			P2SH:            0x32,
 			PrivateKeyID:    0xB0,
 			HDCoinType:      2,
-			HDPrivateKeyID:  [4]byte{0x04, 0x88, 0xad, 0xe4},
-			HDPublicKeyID:   [4]byte{0x04, 0x88, 0xb2, 0x1e},
+			HDPrivateKeyID:  [4]byte{0x04, 0x88, 0xad, 0xe4}, // starts with xprv
+			HDPublicKeyID:   [4]byte{0x04, 0x88, 0xb2, 0x1e}, // starts with xpub
 			magic:           0xfbc0b6db,
 			Bech32HRPSegwit: "ltc",
 		},
 	},
 }
 
-// select a coin by symbol and return Coin struct and error
+// select an asset by symbol and return Asset struct and error
 // coin symbol to lower case
-func SelectCoin(symbol string) (Coin, error) {
+func SelectAsset(symbol string) (Asset, error) {
 	if coins, ok := coins[strings.ToLower(symbol)]; ok {
 		return coins, nil
 	}
-	return Coin{}, fmt.Errorf("altcoin %s not found\n", symbol)
+	return Asset{}, fmt.Errorf("asset %s not found\n", symbol)
 }
 
 // set the chainparams correct for the given Network struct

@@ -16,10 +16,6 @@ type Coin struct {
 	Unit          string
 	Symbol        string
 	Network       *Network
-	TxVersion     int32
-	MinRelayTxFee float64
-	FeePerByte    int
-	Dust          int64
 }
 
 type Network struct {
@@ -46,10 +42,6 @@ var coins = map[string]Coin{
 			magic:           0xcbc6680f,
 			Bech32HRPSegwit: "via",
 		},
-		TxVersion:     2,
-		MinRelayTxFee: 0.001,
-		FeePerByte:    110,
-		Dust:          int64(1000),
 	},
 
 	"ltc": {
@@ -65,10 +57,6 @@ var coins = map[string]Coin{
 			magic:           0xfbc0b6db,
 			Bech32HRPSegwit: "ltc",
 		},
-		TxVersion:     2,
-		MinRelayTxFee: 0.001,
-		FeePerByte:    280,
-		Dust:          int64(10000),
 	},
 }
 

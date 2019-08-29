@@ -116,3 +116,8 @@ func TestWIFToBech32(t *testing.T) {
 		}
 	}
 }
+
+func TestReee(t *testing.T) {
+	net, _ := bcoins.SelectAsset("via")
+	Reee(net.Network.ChainCgfMainNetParams())
+}

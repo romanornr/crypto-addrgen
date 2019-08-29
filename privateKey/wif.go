@@ -10,6 +10,7 @@ import (
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/txscript"
 	"github.com/btcsuite/btcutil"
+	"github.com/btcsuite/btcutil/hdkeychain"
 	"github.com/btcsuite/btcutil/bech32"
 )
 
@@ -80,11 +81,15 @@ func WIFToBech32(wif *btcutil.WIF, hrp string) string {
 	return encoded
 }
 
-//func Reee(net *chaincfg.Params) {
-//	acct0Pub, err := hdkeychain.NewKeyFromString("xpub6Cb8Q6pDeS8PdKNbDv9Hvq4WpJXL3JvKvmHHwR1wD2H543hiCUE1f1tB5AXE6yg13k7xZ6PzEXMNUFHXk6kkx4RYte8VB1i4tCX9rwQVR4a")
-//	if err != nil {
-//		panic(err)
-//	}
+func Reee(net *chaincfg.Params) {
+	// m/49'/HDCointype'/0'
+	chaincfg.Register(net)
+	acct0Pub, err := hdkeychain.NewKeyFromString("xpub6Cb8Q6pDeS8PdKNbDv9Hvq4WpJXL3JvKvmHHwR1wD2H543hiCUE1f1tB5AXE6yg13k7xZ6PzEXMNUFHXk6kkx4RYte8VB1i4tCX9rwQVR4a")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(acct0Pub)
+}
 //
 //	// m/49'/1'/0'/0
 //	acct0ExternalPub, err := acct0Pub.Child(0)

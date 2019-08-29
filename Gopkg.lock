@@ -3,7 +3,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:1f5e4b7aad1076fe9a8f9398bd70824deff7a213b92f66ca2322214b4061aadd"
+  digest = "1:882858aad10ea9a5e68ce1dae7855cae7d0f8031c9bcc06b061c9003223d59b7"
   name = "github.com/btcsuite/btcd"
   packages = [
     "btcec",
@@ -13,7 +13,7 @@
     "wire",
   ]
   pruneopts = "UT"
-  revision = "306aecffea325e97f513b3ff0cf7895a5310651d"
+  revision = "130ea5bddde33df32b06a1cdb42a6316eb73cff5"
 
 [[projects]]
   branch = "master"
@@ -25,15 +25,16 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:d0a31b77988b04afbfa2c5ee38567a7a35d5a95de2266a644a7bc8d5c898e68d"
+  digest = "1:456e40540d5256454d0585141c0338946d552d5dec04ede6bded006509ec4c35"
   name = "github.com/btcsuite/btcutil"
   packages = [
     ".",
     "base58",
     "bech32",
+    "hdkeychain",
   ]
   pruneopts = "UT"
-  revision = "4c204d6978034c001714728401fcd63060d568b4"
+  revision = "9e5f4b9a998d263e3ce9c56664a7816001ac8000"
 
 [[projects]]
   branch = "master"
@@ -41,7 +42,7 @@
   name = "golang.org/x/crypto"
   packages = ["ripemd160"]
   pruneopts = "UT"
-  revision = "8dd112bcdc25174059e45e07517d9fc663123347"
+  revision = "9756ffdc24725223350eb3266ffb92590d28f278"
 
 [solve-meta]
   analyzer-name = "dep"
@@ -51,7 +52,8 @@
     "github.com/btcsuite/btcd/chaincfg",
     "github.com/btcsuite/btcd/txscript",
     "github.com/btcsuite/btcd/wire",
-    "github.com/btcsuite/btcutil",
+    "github.com/btcsuite/btcutil/bech32",
+    "github.com/btcsuite/btcutil/hdkeychain",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
